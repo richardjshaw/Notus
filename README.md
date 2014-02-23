@@ -31,6 +31,17 @@ Build with :-
 ant debug
 
 Installing
-----------
+==========
 
 adb -d install </path/to/Notus>/bin/Notus-debug.apk
+
+
+Running
+=======
+
+Start the Notus app.
+Click the Connect button.
+Assuming a successful connection (Status Message is 'Connected' and
+stats start updating), click `Start Log'. This will write to a log file
+under 'notus' on your Android device. You can then click `Stop Log' to
+end data logging.
