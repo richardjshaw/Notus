@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/widget28"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+
+<TextView
+  android:id="@+id/Welcometext"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:text="@string/hello"
+  android:textSize="20sp">
+</TextView>
+
+<Button android:text="Connect" 
+  android:id="@+id/ButtonConnect" 
+  android:layout_width="wrap_content" 
+  android:layout_below="@+id/Welcometext"
+  android:layout_height="wrap_content">
+</Button>
+
+<Button android:text="Disconnect"
+  android:id="@+id/ButtonDisconnect"
+  android:layout_toRightOf="@id/ButtonConnect"
+  android:layout_alignTop="@id/ButtonConnect" 
+  android:layout_width="wrap_content" 
+  android:layout_height="wrap_content">
+</Button>
+
+<Button android:text="Start Log"
+  android:id="@+id/ButtonLog"
+  android:layout_toRightOf="@+id/ButtonDisconnect"
+  android:layout_alignTop="@+id/ButtonDisconnect"
+  android:layout_width="wrap_content" 
+  android:layout_height="wrap_content">
+</Button>
+
+<EditText 
+  android:id="@+id/labelHeartRate" 
+  android:layout_width="wrap_content" 
+  android:layout_height="wrap_content" 
+  android:text="000" 
+  android:layout_below="@+id/ButtonConnect" 
+  android:layout_alignParentRight="true">
+</EditText>
+
+<TextView 
+  android:id = "@+id/HRTextBox"
+  android:layout_width="fill_parent" 
+  android:layout_height="wrap_content"
+  android:layout_below="@+id/ButtonConnect" 
+  android:text="Heart Rate"
+  android:textSize = "20sp">
+</TextView>
+
+<TextView 
+  android:id = "@+id/labelHeartTime1"
+  android:layout_width="fill_parent" 
+  android:layout_height="wrap_content"
+  android:layout_below="@+id/labelHeartRate" 
+  android:text="Heart Time 1"
+  android:textSize = "20sp">
+</TextView>
+
+<EditText 
+  android:id="@+id/HeartTime1" 
+  android:layout_width="wrap_content" 
+  android:layout_height="wrap_content" 
+  android:text="00000" 
+  android:layout_below="@+id/labelHeartRate" 
+  android:layout_alignParentRight="true">
+</EditText>
+
+<TextView 
+  android:id = "@+id/labelHeartTime2"
+  android:layout_width="fill_parent" 
+  android:layout_height="wrap_content"
+  android:layout_below="@+id/HeartTime1" 
+  android:text="Heart Time 2"
+  android:textSize = "20sp">
+</TextView>
+
+<EditText 
+  android:id="@+id/HeartTime2" 
+  android:layout_width="wrap_content" 
+  android:layout_height="wrap_content" 
+  android:text="00000"
+  android:layout_below="@+id/HeartTime1" 
+  android:layout_alignParentRight="true">
+</EditText>
+
+<TextView 
+  android:id = "@+id/labelHeartTime3"
+  android:layout_width="fill_parent" 
+  android:layout_height="wrap_content"
+  android:layout_below="@+id/HeartTime2" 
+  android:text="Heart Time 3"
+  android:textSize = "20sp">
+</TextView>
+
+<EditText 
+  android:id="@+id/HeartTime3" 
+  android:layout_width="wrap_content" 
+  android:layout_height="wrap_content" 
+  android:text="00000" 
+  android:layout_below="@+id/HeartTime2" 
+  android:layout_alignParentRight="true">
+</EditText>
+
+<TextView 
+  android:id = "@+id/InstantSpeed"
+  android:layout_width="fill_parent" 
+  android:layout_height="wrap_content"
+  android:layout_below="@+id/HeartTime3" 
+  android:text="Instant Speed"
+  android:textSize = "20sp">
+</TextView>
+
+<EditText 
+  android:id="@+id/labelInstantSpeed" 
+  android:layout_width="wrap_content" 
+  android:layout_height="wrap_content" 
+  android:text="000"
+  android:layout_below="@+id/HeartTime3" 
+  android:layout_alignParentRight="true">
+</EditText>
+
+<TextView 
+  android:id = "@+id/BatteryCharge"
+  android:layout_width="fill_parent" 
+  android:layout_height="wrap_content"
+  android:layout_below="@+id/labelInstantSpeed" 
+  android:text="Battery Charge"
+  android:textSize = "20sp">
+</TextView>
+
+<EditText 
+  android:id="@+id/labelBatteryCharge" 
+  android:layout_width="wrap_content" 
+  android:layout_height="wrap_content" 
+  android:text="00"
+  android:layout_below="@+id/labelInstantSpeed" 
+  android:layout_alignParentRight="true">
+</EditText>
+
+<TextView 
+  android:id = "@+id/StatusTextBox"
+  android:layout_width="fill_parent" 
+  android:layout_height="wrap_content"
+  android:layout_below="@+id/labelBatteryCharge" 
+  android:text="Status Message"
+  android:textSize = "20sp">
+</TextView>
+
+<EditText 
+  android:id="@+id/labelStatusMsg" 
+  android:layout_width="wrap_content" 
+  android:layout_height="wrap_content" 
+  android:text="Status Message Box" 
+  android:layout_below="@+id/StatusTextBox" 
+  android:layout_alignParentLeft="true">
+</EditText>
+
+</RelativeLayout>
