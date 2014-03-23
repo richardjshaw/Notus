@@ -190,7 +190,12 @@ public class Notus extends Activity {
 
 			    btnLog.setText("Start Log");
 			} else {
-			    String logFilename = "notus.log";
+			    SimpleDateFormat s 
+				= new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss");
+			    String timeStamp = s.format(new Date());
+
+			    String logFilename
+				= "notus_" + timeStamp + ".log";
 			    String newline = "\n";
 
 			    try {
@@ -275,13 +280,21 @@ public class Notus extends Activity {
 
 		switch (msg.what) {
 		case HEART_RATE:
-		    String HeartRatetext
+		    String HeartRateStr
 			= msg.getData().getString("HeartRate");
+		    int HeartRate = Integer.parseInt(HeartRateStr);
+
+		    if (HeartRate < 0) {
+			HeartRate += 128;
+		    }
+
+		    HeartRateStr = Integer.toString(HeartRate);
+
 		    tv = (EditText)findViewById(R.id.labelHeartRate);
-		    //System.out.println("Heart Rate Info is "+ HeartRatetext);
+		    //System.out.println("Heart Rate Info is "+ HeartRateStr);
 
 		    if (tv != null) {
-			tv.setText(HeartRatetext);
+			tv.setText(HeartRateStr);
 		    }
 
 		    if (amLogging) {
@@ -305,7 +318,7 @@ public class Notus extends Activity {
 			}
 
 			try {
-			    myOutputStream.write(HeartRatetext.getBytes());
+			    myOutputStream.write(HeartRateStr.getBytes());
 			    myOutputStream.write(newline.getBytes());
 			} catch (Exception e) {
 			    e.printStackTrace();
