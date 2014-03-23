@@ -1,7 +1,6 @@
 package com.example.notus;
 import android.app.Activity;
 
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -19,9 +18,7 @@ public class NewConnectedListener extends ConnectListenerImpl
     private final int HEART_RATE = 0x100;
     private final int INSTANT_SPEED = 0x101;
     private final int BATTERY_CHARGE = 0x102;
-    private final int HEART_TIME1 = 0x0103;
-    private final int HEART_TIME2 = 0x0104;
-    private final int HEART_TIME3 = 0x0105;
+    private final int HEART_TIMES = 0x0103;
     private HRSpeedDistPacketInfo HRSpeedDistPacket
 	= new HRSpeedDistPacketInfo();
 
@@ -78,29 +75,17 @@ public class NewConnectedListener extends ConnectListenerImpl
 			text1.setData(b1);
 			_aNewHandler.sendMessage(text1);
 
-			// FIXME : duplication
-
 			int[] HeartTimeArr
 			    = HRSpeedDistPacket.GetHeartBeatTS(DataArray);
+			String timesStr = String.valueOf(HeartTimeArr[0]);
 
-			int HeartTime1 = HeartTimeArr[0];
-			text1 = _aNewHandler.obtainMessage(HEART_TIME1);
-			b1.putString("HeartTime1",
-				     String.valueOf(HeartTime1));
-			text1.setData(b1);
-			_aNewHandler.sendMessage(text1);
+			for (int beatInd = 1; beatInd < 16; ++beatInd) {
+			    timesStr = timesStr + ","
+				+ String.valueOf(HeartTimeArr[0]);
+			}
 
-			int HeartTime2 = HeartTimeArr[1];
-			text1 = _aNewHandler.obtainMessage(HEART_TIME2);
-			b1.putString("HeartTime2",
-				     String.valueOf(HeartTime2));
-			text1.setData(b1);
-			_aNewHandler.sendMessage(text1);
-
-			int HeartTime3 = HeartTimeArr[2];
-			text1 = _aNewHandler.obtainMessage(HEART_TIME3);
-			b1.putString("HeartTime3",
-				     String.valueOf(HeartTime3));
+			text1 = _aNewHandler.obtainMessage(HEART_TIMES);
+			b1.putString("HeartTimes", timesStr);
 			text1.setData(b1);
 			_aNewHandler.sendMessage(text1);
 		    }

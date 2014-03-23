@@ -46,9 +46,7 @@ public class Notus extends Activity {
     private final int HEART_RATE = 0x100;
     private final int INSTANT_SPEED = 0x101;
     private final int BATTERY_CHARGE = 0x102;
-    private final int HEART_TIME1 = 0x0103;
-    private final int HEART_TIME2 = 0x0104;
-    private final int HEART_TIME3 = 0x0105;
+    private final int HEART_TIMES = 0x0103;
 
     Boolean amLogging = false;
     FileOutputStream myOutputStream;
@@ -276,7 +274,7 @@ public class Notus extends Activity {
 
     final  Handler Newhandler = new Handler() {
 	    public void handleMessage(Message msg) {
-		TextView tv;
+		TextView tv = null;
 
 		switch (msg.what) {
 		case HEART_RATE:
@@ -349,37 +347,29 @@ public class Notus extends Activity {
 
 		    break;
 
-		    // FIXME : duplication
+		case HEART_TIMES:
+		    String HeartTimesText
+			= msg.getData().getString("HeartTimes");
+		    String[] timeStrs = HeartTimesText.split(",");
 
-		case HEART_TIME1:
-		    String HeartTime1Text
-			= msg.getData().getString("HeartTime1");
-		    tv = (EditText)findViewById(R.id.HeartTime1);
+		    for (int beatInd=0; beatInd <3; ++beatInd) {
+			switch (beatInd) {
+			case 0:
+			    tv = (EditText)findViewById(R.id.HeartTime1);
+			    break;
+			case 1:
+			    tv = (EditText)findViewById(R.id.HeartTime2);
+			    break;
+			case 2:
+			    tv = (EditText)findViewById(R.id.HeartTime3);
+			    break;
+			default:
+			    break;
+			}
 
-		    if (tv != null) {
-			tv.setText(HeartTime1Text);
-		    }
-
-		    break;
-
-		case HEART_TIME2:
-		    String HeartTime2Text
-			= msg.getData().getString("HeartTime2");
-		    tv = (EditText)findViewById(R.id.HeartTime2);
-
-		    if (tv != null) {
-			tv.setText(HeartTime2Text);
-		    }
-
-		    break;
-
-		case HEART_TIME3:
-		    String HeartTime3Text
-			= msg.getData().getString("HeartTime3");
-		    tv = (EditText)findViewById(R.id.HeartTime3);
-
-		    if (tv != null) {
-			tv.setText(HeartTime3Text);
+			if (tv != null) {
+			    tv.setText(timeStrs[beatInd]);
+			}
 		    }
 
 		    break;
